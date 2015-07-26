@@ -151,7 +151,7 @@
       option.text = title;
       example_passage.append(option);
     }
-    return example_passage.click(function() {
+    return example_passage.on('change', function() {
       var ex_paragraph;
       ex_paragraph = example_passage.val();
       return $('textarea[name=passage]').val(example_passages[ex_paragraph]);
