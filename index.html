@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speed Reading Trainer</title>
+
+    <link rel="stylesheet" type="text/css" href='css/lib/bootstrap.min.css' />
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src='js/lib/bootstrap.min.js'> </script>
+    <script src="js/index.js" type="text/javascript"></script>
+
+  </head>
+  <body>
+    <div class="container">
+
+      <div id="settings">
+        <form onsubmit="return false;">
+          <div class="row">
+
+            <div class="col-xs-4">
+              <div class="row">
+                <label>Text Direction: </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="textdir" value="ltr" selected/>
+                  Left-to-Right
+                </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="textdir" value="rtl"/>
+                  Right-to-Left
+                </label>
+              </div>
+
+              <div class="row">
+                <label>Treat each character as a word:
+                  <input type="checkbox" name="logograms"/>
+                </label>
+              </div>
+            </div>
+
+            <div class="col-xs-4">
+              <div class="row">
+                <label>Preset: </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="preset" value="beginner"/>
+                  Beginner
+                </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="preset" value="easy"/>
+                  Easy
+                </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="preset" value="medium"/>
+                  Medium
+                </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="preset" value="hard"/>
+                  Hard
+                </label>
+              </div>
+              <div class="row">
+                <label>
+                  <input type="radio" name="preset" value="advanced"/>
+                  Advanced
+                </label>
+              </div>
+            </div>
+
+            <div class="col-xs-4">
+              <div class="row">
+                <label>Number of columns: </label>
+                <select name="cols">
+                  <option value="1">1</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="2w">2 (wide)</option>
+                  <option value="2xw">2 (extra-wide)</option>
+                </select>
+              </div>
+
+              <div class="row">
+                <label>Words per minute:
+                  <input name="wpm" type="number" min="1" value="40"/>
+                </label>
+              </div>
+
+              <div class="row">
+                <label>Words per column:
+                  <input name="wpc" type="number" min="1" step="1" value="1"/>
+                </label>
+              </div>
+
+              <div class="row">
+                <label>Minimum word size:
+                  <input name="ws" type="number" min="1" step="1" value="5"/>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-8">
+              <label>Text: <br/>
+                <textarea name="passage" rows="12" cols="48"></textarea>
+              </label>
+
+              <br/>
+
+              <label>Example Passage:
+                <select name="example_passage"></select>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-5">
+            </div>
+            <div class="col-xs-7">
+              <button type="submit">Run Exercise</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="exercises">
+        <button id="reset">Reset</button>
+        <!-- single column -->
+        <div class="row">
+          <div class="col-xs-5">
+            <!-- padding -->
+          </div>
+          <div class="col-xs-7" id="single">
+          </div>
+        </div>
+
+        <!-- double column -->
+        <div class="row">
+          <div class="col-xs-2">
+            <!-- padding -->
+          </div>
+          <div class="col-xs-6" id="double_narrow_left">
+          </div>
+          <div class="col-xs-4" id="double_narrow_right">
+          </div>
+        </div>
+
+        <!-- double column wide -->
+        <div class="row">
+          <div class="col-xs-1">
+            <!-- padding -->
+          </div>
+          <div class="col-xs-8" id="double_wide_left">
+          </div>
+          <div class="col-xs-3" id="double_wide_right">
+          </div>
+        </div>
+
+        <!-- double column extra wide -->
+        <div class="row">
+          <div class="col-xs-1">
+            <!-- padding -->
+          </div>
+          <div class="col-xs-9" id="double_xwide_left">
+          </div>
+          <div class="col-xs-2" id="double_xwide_right">
+          </div>
+        </div>
+
+        <!-- triple column -->
+        <div class="row">
+          <div class="col-xs-1">
+            <!-- padding -->
+          </div>
+          <div class="col-xs-4" id="triple_left">
+          </div>
+          <div class="col-xs-4" id="triple_center">
+          </div>
+          <div class="col-xs-3" id="triple_right">
+          </div>
+        </div>
+
+        <!-- quadruple column -->
+        <div class="row">
+          <div class="col-xs-3" id="quad_left">
+          </div>
+          <div class="col-xs-3" id="quad_c_left">
+          </div>
+          <div class="col-xs-3" id="quad_c_right">
+          </div>
+          <div class="col-xs-3" id="quad_right">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
