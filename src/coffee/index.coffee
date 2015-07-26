@@ -143,7 +143,7 @@ $(->
         option.text = title
         example_passage.append(option)
 
-    example_passage.click(->
+    example_passage.on('change', ->
         ex_paragraph = example_passage.val()
         $('textarea[name=passage]').val(example_passages[ex_paragraph])
     )
