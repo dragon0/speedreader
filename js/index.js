@@ -59,8 +59,8 @@
   };
 
   $(function() {
-    var col_ar, column_index, delay, example_passage, form, intervalID, option, paragraph, passage_ar, passage_index, prevID, reset, title, update;
-    intervalID = null;
+    var col_ar, column_index, delay, example_passage, form, option, paragraph, passage_ar, passage_index, prevID, reset, timeoutID, title, update;
+    timeoutID = null;
     delay = null;
     prevID = null;
     passage_ar = null;
@@ -68,7 +68,7 @@
     passage_index = null;
     column_index = null;
     reset = function() {
-      clearInterval(intervalID);
+      clearTimeout(timeoutID);
       $("#exercises").hide();
       $("#settings").show();
       return $("#" + prevID).html("");
@@ -82,7 +82,8 @@
         column_index = (column_index + 1) % col_ar.length;
         $("#" + prevID).text(passage_ar[passage_index]);
         $("#out_word").text(passage_ar[passage_index]);
-        return passage_index++;
+        passage_index++;
+        return timeoutID = setTimeout(update, delay);
       }
     };
     $("input[name=preset]").click(function() {
@@ -139,8 +140,7 @@
       delay = (60 / (wpm / wpc)) * 1000;
       $("#exercises").show();
       $("#settings").hide();
-      intervalID = setInterval(update, delay);
-      update();
+      timeoutID = setTimeout(update, 0);
       return false;
     };
     example_passage = $("select[name=example_passage]");
