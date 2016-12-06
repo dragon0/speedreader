@@ -47,7 +47,7 @@ example_passages =
     'I Give to You':'I give to you, to be yours for all times, the right to the free enjoyment of this world. I give to you the years that are before you and the big wide world that is about you. I give to you this day for it is life, the very life of life, the beauty of growth, the satisfaction of work and the joys of fulfillment. For today well lived, makes every yesterday a vision of hope and every tomorrow a dream come true.\n\nSo, take this day, with the glorious sun that shines over the hills, with the rain that waters the green earth, and the wind that kisses the flowers and the leaves. I give to you the eager hope of the spring, with the right to see the slow disrobing of the gray winter and the entrance of the yellow sun.\n\nI give to you the four seasons, the promise of fall with faith in the fact that all living things will bloom again in spring, the winter with its million pretty things, the hot summer with the berries and the floating clouds that dance across the blue skies. I give to you the night with the right to sleep and the dawn with the vision of the rising sun over the horizon.'
 
 $(->
-    intervalID = null
+    timeoutID = null
     delay = null
     prevID = null
     passage_ar = null
@@ -56,7 +56,7 @@ $(->
     column_index = null
 
     reset = ->
-        clearInterval(intervalID)
+        clearTimeout(timeoutID)
         $("#exercises").hide()
         $("#settings").show()
         $("##{prevID}").html("")
@@ -72,6 +72,7 @@ $(->
             $("##{prevID}").text(passage_ar[passage_index])
             $("#out_word").text(passage_ar[passage_index])
             passage_index++
+            timeoutID = setTimeout(update, delay);
 
     $("input[name=preset]").click(->
         preset = $('input[name=preset]:checked').val()
@@ -132,8 +133,7 @@ $(->
         $("#exercises").show()
         $("#settings").hide()
 
-        intervalID = setInterval(update, delay)
-        update()
+        timeoutID = setTimeout(update, 0)
 
         false
 
