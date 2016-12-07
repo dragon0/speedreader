@@ -133,7 +133,7 @@ $(->
         $("#exercises").show()
         $("#settings").hide()
 
-        timeoutID = setTimeout(update, 0)
+        timeoutID = setTimeout(update, delay)
 
         false
 
