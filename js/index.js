@@ -140,7 +140,7 @@
       delay = (60 / (wpm / wpc)) * 1000;
       $("#exercises").show();
       $("#settings").hide();
-      timeoutID = setTimeout(update, 0);
+      timeoutID = setTimeout(update, delay);
       return false;
     };
     example_passage = $("select[name=example_passage]");
